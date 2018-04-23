@@ -1,0 +1,21 @@
+<div class="content">
+  <!--<div ng-controller="MyAppController">-->
+    <button ng-click="order = 'name'">Order by Name</button>
+    <button ng-click="order = 'price'">Order by Price</button>
+    <input type="text" ng-model="search" placeholder="Search for a drink name"/>
+    <ul>
+      <li ng-repeat="drink in drinks | orderBy: order | filter: search">
+        <h3>{{drink.name}} - {{drink.price | currency: '£'}}</h3>
+        <div class="remove" ng-click="removeDrink(drink)">x</div>
+        <span class="color" style="background: {{drink.color}}">{{drink.hydration}}</span>
+      </li>
+    </ul>
+    <form ng-submit="addDrink()">
+      <img ng-src="{{drink.thumb}}" style="margin: -12px 10px 0 0; float:left; width:50px;" ng-show="drink.thumb"/>
+      <input type="text" placeholder="name" ng-model="newDrink.name" />
+      <input type="text" placeholder="price" ng-model="newDrink.price" />
+      <input type="submit" value="Add new drink" />
+    </form>
+
+  <!--</div>-->
+</div>
